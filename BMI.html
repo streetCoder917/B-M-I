@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Verdana, Geneva, sans-serif;
+        }
+
+        section {
+            box-shadow: 1px 1px 8px silver;
+            background-color: rgb(221, 216, 216);
+            padding: 50px 0 0 0;
+        }
+
+        section img {
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            width: 400px;
+            height: 400px;
+        }
+
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        button {
+            display: block;
+            margin: auto;
+            padding: 10px;
+            font-size: 20px;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        #result {
+            text-align: center;
+            width: 400px;
+            margin: auto;
+        }
+
+        #res_bmi {
+            font-size: 20px;
+        }
+
+        #result p,
+        #result h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <img src="./images.jpg" alt="">
+        <input type="text" id="weight" placeholder="Write weight">
+        <input type="text" id="height" placeholder="Write height">
+        <button id="btn">click!</button>
+        <div id="result">
+            <p id="res_bmi"></p>
+            <h2 id="catigory_bmi"></h2>
+        </div>
+    </section>
+
+</body>
+
+<script>
+    var myBtn = document.getElementById('btn')
+
+    // the weight
+    var weight = document.getElementById('weight')
+
+    // the height
+    var height = document.getElementById('height')
+
+    // result of BMI 
+    var result_of_Bmi = document.getElementById('res_bmi')
+
+    // this for show what the status for this case
+    var catigory = document.getElementById('catigory_bmi')
+
+    myBtn.addEventListener('click', () => {
+        var height = document.getElementById('height')
+        var BMI = Number(weight.value) / (Number(height.value) ** 2)
+
+        // the result of BMI
+        
+        
+        if (weight.value == '' || height.value == '') {
+            alert('من فضلك أدخل جميع الحقول لتحصل على نتيجة!')
+            result_of_Bmi.style.display = 'none'
+        } else {
+            result_of_Bmi.style.display = 'block'
+            result_of_Bmi.style.background = 'dodgerblue'
+            result_of_Bmi.style.color = 'white'
+            result_of_Bmi.innerHTML = BMI
+            if (BMI < 18) {
+                catigory.innerHTML = 'نحافة'
+            } else if (BMI >= 18 && BMI <= 24.9) {
+                catigory.innerHTML = 'وزن مثالى'
+            } else if (BMI >= 25 && BMI <= 29.9) {
+                catigory.innerHTML = 'وزن زائد'
+            } else if (BMI >= 30 && BMI <= 34.9) {
+                catigory.innerHTML = 'سمنة درجة أولى'
+            } else if (BMI >= 35 && BMI <= 39.9) {
+                catigory.innerHTML = 'سمنة درجة ثانية'
+            } else if (BMI >= 40) {
+                catigory.innerHTML = 'سمنة خطيرة'
+            }
+        }
+
+
+
+
+
+        // alert('من فضلك أدخل جميع الحقول لتحصل على نتيجة!')
+
+    })
+</script>
+
+</html>
